@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{ asset('css/result.css') }}">
 </head>
-<body onfocus="console.log('aaa')">
-    <div style="display: inline-block; position: relative">
+<body>
+    @include('components/header')
+
+    <div class="mapContainer">
         <img src="{{ asset("maps/$uid-1.png") }}" alt/>
 
         <?php

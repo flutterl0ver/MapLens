@@ -1,6 +1,6 @@
 import json.encoder
-
 import cv2
+import sys
 from os import path
 from MapsComparer import MapsComparer
 
@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     mc = MapsComparer()
 
-    mapsUid = 'sample'
+    mapsUid = sys.argv[1]
 
     img1 = cv2.imread(mapsRoot + mapsUid + '-1.png')
     img2 = cv2.imread(mapsRoot + mapsUid + '-2.png')
@@ -29,6 +29,6 @@ if __name__ == '__main__':
     #
     # cv2.imshow("img1", img1)
     # cv2.imshow("img2", img2)
-
+    #
     # cv2.waitKey(0)
     print(json.dumps(output))

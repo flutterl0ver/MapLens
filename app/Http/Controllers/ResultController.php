@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\File;
 
 class ResultController extends Controller
 {
@@ -20,7 +19,7 @@ class ResultController extends Controller
 
         $pythonPath = dirname(getenv('AppData')) . '\Local\Programs\Python\Python314\python.exe';
         $filePath = dirname(getcwd()) . '\mapsComparingService\main.py';
-        $output = shell_exec($pythonPath . ' ' . $filePath);
+        $output = shell_exec($pythonPath . ' ' . $filePath . ' ' . $result->id);
 
         $result->rects = $output;
         $result->save();

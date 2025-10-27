@@ -3,5 +3,5 @@
 </head>
 
 <div class="header">
-    <span class="headerTitle">MapLens</span>
+    <a class="headerTitle" href="/">MapLens</a>
 </div>
