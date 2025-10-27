@@ -4,6 +4,7 @@
     <meta charset="utf-8">
 </head>
 <body>
+    @include('components/header')
     <form method="POST" action="/result" enctype="multipart/form-data">
         @csrf
         <input type="file" accept="image/*" name="map1"/>

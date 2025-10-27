@@ -1,0 +1,16 @@
+div.header {
+    position: fixed;
+    background-color: #3535A7;
+    height: 80px;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 25px 25px;
+}
+
+span.headerTitle {
+    color: white;
+    font-size: 56px;
+    font-family: 'Bounded ExtraLight';
+    margin-left: 40px;
+}
