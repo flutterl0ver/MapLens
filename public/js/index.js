@@ -3,18 +3,37 @@ function chooseFile(id)
     document.getElementById(id).click();
 }
 
-function applyImage(event, id)
+function applyImage(id)
 {
-    const imageUrl = URL.createObjectURL(event.target.files[0]);
-    const img = document.getElementById('map'+ id + 'Preview');
-    img.src = imageUrl;
-    img.style.display = 'initial';
-    document.getElementById('map' + id + 'Hint').style.display = 'none';
+    const map = document.getElementById('map' + id);
+
+    if(map.value !== null && map.value !== '')
+    {
+        const imageUrl = URL.createObjectURL(map.files[0]);
+        const img = document.getElementById('map'+ id + 'Preview');
+        img.src = imageUrl;
+        img.style.display = 'initial';
+        document.getElementById('map' + id + 'Hint').style.display = 'none';
+    }
+    else
+    {
+        const img = document.getElementById('map'+ id + 'Preview');
+        img.src = '#';
+        img.style.display = 'none';
+        document.getElementById('map' + id + 'Hint').style.display = 'initial';
+    }
 }
 
+function deleteImage(id)
+{
+    document.getElementById('map' + id).value = null;
+    applyImage(id);
+}
+
+
 document.getElementById('map1').addEventListener('change', function(event) {
-    applyImage(event, 1);
+    applyImage(1);
 });
 document.getElementById('map2').addEventListener('change', function(event) {
-    applyImage(event, 2);
+    applyImage( 2);
 });

@@ -51,6 +51,21 @@ input[type=submit]:hover {
     background-color: #3535A7;
 }
 
+button.delete {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    width: 24px;
+    height: 24px;
+}
+button.delete:hover {
+    cursor: pointer;
+    background-color: #11111111;
+}
+
 form {
     margin: 130px 10px;
 }
