@@ -2,15 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-
 </head>
 <body>
-    <?php
-        $python = dirname(getenv('AppData')) . '\Local\Programs\Python\Python314\python.exe';
-        $file = dirname(getcwd()) . '\mapsComparingService\main.py';
-        $output = shell_exec($python . ' ' . $file);
-        $result = json_decode($output);
-        echo $output;
-        ?>
+    <form method="POST" action="/result" enctype="multipart/form-data">
+        @csrf
+        <input type="file" accept="image/*" name="map1"/>
+        <input type="file" accept="image/*" name="map2"/>
+        <input type="submit"/>
+    </form>
 </body>
 </html>

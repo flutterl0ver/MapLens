@@ -1,0 +1,9 @@
+div.diff {
+    position: absolute;
+    border: solid lime 3px;
+    opacity: 0.3;
+}
+div.diff:hover {
+    background-color: lime;
+    cursor: pointer;
+}
