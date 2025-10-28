@@ -14,13 +14,23 @@ div.selectImg:hover {
     cursor: pointer;
 }
 
-span.select {
+div.hint {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     position: absolute;
-    left: 0;
-    right: 0;
+    justify-content: space-between;
+    left: 20%;
+    right: 20%;
+    top: 10%;
+    bottom: 10%;
     text-align: center;
-    line-height: 311px;
     font-size: 20px;
+}
+
+img.upload {
+    width: 61px;
+    height: 61px;
 }
 
 img.preview {

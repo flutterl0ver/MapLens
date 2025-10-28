@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Сравнить карты</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 <body>
@@ -14,7 +15,10 @@
         <div class="formContainer">
             <div class="imagesContainer">
                 <div class="selectImg" onclick="chooseFile('map1')">
-                    <span class="select" id="map1Hint">Загрузите изображение</span>
+                    <div class="hint" id="map1Hint">
+                        <span>Загрузите изображение в формате .png или .jpg</span>
+                        <img class="upload" src="{{ asset('img/upload.png') }}" alt>
+                    </div>
                     <img class="preview" id="map1Preview" alt src="#">
                     <button class="delete" type="button" onclick="deleteImage(1)">
                         <img src="{{ asset('img/delete.png') }}" style="height: 100%; width: 100%" alt>
@@ -22,7 +26,10 @@
                 </div>
 
                 <div class="selectImg" onclick="chooseFile('map2')">
-                    <span class="select" id="map2Hint">Загрузите изображение</span>
+                    <div class="hint" id="map2Hint">
+                        <span>Загрузите изображение в формате .png или .jpg</span>
+                        <img class="upload" src="{{ asset('img/upload.png') }}" alt>
+                    </div>
                     <img class="preview" id="map2Preview" alt src="#">
                     <button class="delete" type="button" onclick="deleteImage(2)">
                         <img src="{{ asset('img/delete.png') }}" style="height: 100%; width: 100%" alt>

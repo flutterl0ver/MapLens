@@ -20,7 +20,7 @@ function applyImage(id)
         const img = document.getElementById('map'+ id + 'Preview');
         img.src = '#';
         img.style.display = 'none';
-        document.getElementById('map' + id + 'Hint').style.display = 'initial';
+        document.getElementById('map' + id + 'Hint').style.display = 'flex';
     }
 }
 
