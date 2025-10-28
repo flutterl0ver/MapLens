@@ -1,7 +1,10 @@
-import json.encoder
+import json
+
 import cv2
 import sys
 from os import path
+
+from ColorsDict import ColorsDict
 from MapsComparer import MapsComparer
 
 
@@ -16,19 +19,29 @@ if __name__ == '__main__':
     img1 = cv2.imread(mapsRoot + mapsUid + '-1.png')
     img2 = cv2.imread(mapsRoot + mapsUid + '-2.png')
 
-    result = mc.find_diff(img1, img2)
-    output = []
+    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2HSV)
+    img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2HSV)
 
-    for cont in result:
-        output.append((
-            mc.get_rect(cont[0]),
-            mc.get_rect(cont[1])
-        ))
-    #     cv2.drawContours(img1, cont[0], -1, (0, 0, 0), 2)
-    #     cv2.drawContours(img2, cont[1], -1, (0, 0, 0), 2)
-    #
-    # cv2.imshow("img1", img1)
-    # cv2.imshow("img2", img2)
-    #
-    # cv2.waitKey(0)
-    print(json.dumps(output))
+    cd1 = ColorsDict()
+    cd2 = ColorsDict()
+    cd1.dict = [
+        [[255, 106, 0], '1'],
+        [[127, 0, 0], '1'],
+        [[72, 0, 255], '1'],
+        [[255, 0, 110], '1'],
+        [[76, 255, 0], '1'],
+        [[255, 216, 0], '1']
+    ]
+    cd2.dict = [
+        [[255, 106, 0], '1'],
+        [[178, 0, 255], '1'],
+        [[72, 0, 255], '1'],
+        [[255, 0, 110], '1'],
+        [[76, 255, 0], '1'],
+        [[255, 216, 0], '1']
+    ]
+
+    diff = mc.find_diff(img1, img2, cd1, cd2)
+    rects = mc.get_rects(diff)
+
+    print(json.dumps(rects))

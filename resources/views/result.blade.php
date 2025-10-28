@@ -17,15 +17,17 @@
             $rects = json_decode($result->rects);
         ?>
 
-        @foreach($rects as $rect)
-            <div class="diff" style="
-            left: {{ $rect[0][0][0] }}px;
-            top: {{ $rect[0][0][1] }}px;
-            width: {{ $rect[0][1][0] - $rect[0][0][0] }}px;
-            height: {{ $rect[0][1][1] - $rect[0][0][1] }}px;
-            " onmouseenter="">
-            </div>
-        @endforeach
+        @if($rects)
+            @foreach($rects as $rect)
+                <div class="diff" style="
+                left: {{ $rect[0][0] }}px;
+                top: {{ $rect[0][1] }}px;
+                width: {{ $rect[1][0] - $rect[0][0] }}px;
+                height: {{ $rect[1][1] - $rect[0][1] }}px;
+                " onmouseenter="">
+                </div>
+            @endforeach
+        @endif
     </div>
 </body>
 </html>
