@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Legend;
 use App\Models\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class ResultController extends Controller
 {
@@ -32,7 +33,7 @@ class ResultController extends Controller
         $this->writeImg($img1, $result->id, 1);
         $this->writeImg($img2, $result->id, 2);
 
-        $pythonPath = dirname(getenv('AppData')) . '\Local\Programs\Python\Python314\python.exe';
+        $pythonPath = Config::get('constants.PYTHONPATH');
         $filePath = dirname(getcwd()) . '\mapsComparingService\main.py';
         $output = shell_exec("$pythonPath $filePath $result->id $legend->id");
 
