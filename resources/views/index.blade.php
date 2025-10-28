@@ -19,7 +19,8 @@
         $colorsCount = count($baseLegend);
     ?>
 
-    <form method="POST" action="/result" enctype="multipart/form-data">
+    <span id="loading">Загрузка...</span>
+    <form method="POST" action="/result" enctype="multipart/form-data" id="form" onsubmit="startSearch()">
         @csrf
 
         <div class="formContainer">

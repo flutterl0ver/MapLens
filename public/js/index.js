@@ -44,6 +44,12 @@ function applyColor(id, colorId)
     document.getElementById(colorId).style.backgroundColor = input.value;
 }
 
+function startSearch()
+{
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('loading').style.display = 'initial';
+}
+
 document.getElementById('map1').addEventListener('change', function(event) {
     applyImage(1);
 });
