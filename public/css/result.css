@@ -3,7 +3,7 @@ div.diff {
     border: solid lime 3px;
 }
 div.diff:hover {
-    background-color: lime;
+    background-color: #00ff0044;
     cursor: pointer;
 }
 

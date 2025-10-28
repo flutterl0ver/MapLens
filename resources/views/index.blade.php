@@ -18,6 +18,8 @@
 
         $colorsCount = count($baseLegend);
     ?>
+    <script>let colorsCount = {{ $colorsCount }};</script>
+
 
     <span id="loading">Загрузка...</span>
     <form method="POST" action="/result" enctype="multipart/form-data" id="form" onsubmit="startSearch()">
@@ -49,7 +51,7 @@
             </div>
 
             <span class="legend">Легенда карты:</span>
-            <div class="legend">
+            <div class="legend" id="legendContainer">
                 <?php $i = 0 ?>
                 @foreach($baseLegend as $entry)
                     <div class="legendEntry">
@@ -64,6 +66,7 @@
                     <?php $i++ ?>
                 @endforeach
             </div>
+            <button type="button" class="add" onclick="addLegendEntry()"></button>
 
             <input type="hidden" value="{{ $colorsCount }}" name="colorsCount" id="colorsCount">
         </div>

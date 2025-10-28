@@ -50,6 +50,24 @@ function startSearch()
     document.getElementById('loading').style.display = 'initial';
 }
 
+function addLegendEntry()
+{
+    const legendContainer = document.getElementById('legendContainer');
+    legendContainer.innerHTML += `
+        <div class="legendEntry">
+            <div class="color" id="firstColor${colorsCount}" onclick="startChangingColor('legendFirstColor${colorsCount}')"></div>
+            <input value="#AAAAAA" type="text" hidden name="legendFirstColor${colorsCount}" id="legendFirstColor${colorsCount}" onfocusout="applyColor('legendFirstColor${colorsCount}', 'firstColor${colorsCount}')">
+
+            <textarea name="legendName${colorsCount}"></textarea>
+
+            <div class="color" id="secondColor${colorsCount}" onclick="startChangingColor('legendSecondColor${colorsCount}')"></div>
+            <input value="#AAAAAA" type="text" hidden name="legendSecondColor${colorsCount}" id="legendSecondColor${colorsCount}" onfocusout="applyColor('legendSecondColor${colorsCount}', 'secondColor${colorsCount}')">
+        </div>
+    `;
+    colorsCount++;
+    document.getElementById('colorsCount').value = colorsCount;
+}
+
 document.getElementById('map1').addEventListener('change', function(event) {
     applyImage(1);
 });

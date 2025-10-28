@@ -19,7 +19,7 @@
                 <div id="diffImg1" class="diffImage" style="background-image: url('../maps/{{ $uid }}-1.png')"></div>
                 <div id="diffImg2" class="diffImage" style="background-image: url('../maps/{{ $uid }}-2.png')"></div>
             </div>
-            <div class="diffText">Изменён параметр блаблабла блаблабла на блаблабла блаблабла</div>
+            <div class="diffText"></div>
         </div>
     </div>
     <div class="mapContainer">
