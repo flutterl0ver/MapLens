@@ -60,17 +60,55 @@ span.legend {
 }
 
 input[type=submit] {
+    position: fixed;
     background-color: #4141FF;
     border-radius: 25px;
     width: 142px;
     height: 59px;
+    bottom: 30px;
+    right: 30px;
     border: none;
     color: white;
     font-size: 24px;
+    transition-duration: 0.1s;
 }
 input[type=submit]:hover {
     cursor: pointer;
     background-color: #3535A7;
+}
+
+textarea {
+    background-color: #ECEBF0;
+    border-radius: 25px;
+    border: none;
+    width: 350px;
+    padding: 20px;
+    max-width: 350px;
+    max-height: 400px;
+}
+
+div.legendEntry {
+    width: 55%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto 40px auto;
+}
+
+div.legend {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+div.color {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: gray;
+}
+div.color:hover {
+    cursor: pointer;
 }
 
 button.delete {

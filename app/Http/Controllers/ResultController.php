@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Legend;
 use App\Models\Result;
 use Illuminate\Http\Request;
 
@@ -12,14 +13,28 @@ class ResultController extends Controller
         $img1 = $_FILES['map1'];
         $img2 = $_FILES['map2'];
 
+        $colorsCount = $request->post('colorsCount');
+        $legend = [];
+        for ($i = 0; $i < $colorsCount; $i++)
+        {
+            $firstColor = $request->post('legendFirstColor'.$i);
+            $secondColor = $request->post('legendSecondColor'.$i);
+            $name = $request->post('legendName'.$i);
+            $legend[] = [$firstColor, $secondColor, $name];
+        }
+        $legendArg = json_encode($legend, JSON_UNESCAPED_UNICODE);
+
+        $legend = Legend::create(['legend' => $legendArg]);
         $result = Result::create();
+
+        file_put_contents('legends/' . $legend->id . '.txt', $legendArg);
 
         $this->writeImg($img1, $result->id, 1);
         $this->writeImg($img2, $result->id, 2);
 
         $pythonPath = dirname(getenv('AppData')) . '\Local\Programs\Python\Python314\python.exe';
         $filePath = dirname(getcwd()) . '\mapsComparingService\main.py';
-        $output = shell_exec($pythonPath . ' ' . $filePath . ' ' . $result->id);
+        $output = shell_exec("$pythonPath $filePath $result->id $legend->id");
 
         $result->rects = $output;
         $result->save();

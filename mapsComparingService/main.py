@@ -8,38 +8,35 @@ from ColorsDict import ColorsDict
 from MapsComparer import MapsComparer
 
 
+def to_rgb(hex_color):
+    hex_color = hex_color.lstrip('#')
+    return [int(hex_color[i:i + 2], 16) for i in (0, 2, 4)]
+
+
 if __name__ == '__main__':
     directory = path.dirname(__file__)
     mapsRoot = directory + '/../public/maps/'
+    legendsRoot = directory + '/../public/legends/'
 
     mc = MapsComparer()
 
     mapsUid = sys.argv[1]
+    legendId = sys.argv[2]
+
+    cd1 = ColorsDict()
+    cd2 = ColorsDict()
+
+    legendString = open(legendsRoot + F'{legendId}.txt', 'r').read()
+    legend = json.loads(legendString)
+    for entry in legend:
+        cd1.dict.append([to_rgb(entry[0]), entry[2]])
+        cd2.dict.append([to_rgb(entry[1]), entry[2]])
 
     img1 = cv2.imread(mapsRoot + mapsUid + '-1.png')
     img2 = cv2.imread(mapsRoot + mapsUid + '-2.png')
 
     img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2HSV)
     img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2HSV)
-
-    cd1 = ColorsDict()
-    cd2 = ColorsDict()
-    cd1.dict = [
-        [[255, 106, 0], '1'],
-        [[127, 0, 0], '1'],
-        [[72, 0, 255], '1'],
-        [[255, 0, 110], '1'],
-        [[76, 255, 0], '1'],
-        [[255, 216, 0], '1']
-    ]
-    cd2.dict = [
-        [[255, 106, 0], '1'],
-        [[178, 0, 255], '1'],
-        [[72, 0, 255], '1'],
-        [[255, 0, 110], '1'],
-        [[76, 255, 0], '1'],
-        [[255, 216, 0], '1']
-    ]
 
     diff = mc.find_diff(img1, img2, cd1, cd2)
     rects = mc.get_rects(diff)

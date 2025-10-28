@@ -9,6 +9,16 @@
 <body>
     @include('components/header')
 
+    <?php
+        $baseLegend = [
+            ['#FF5500', 'Зона застройки среднеэтажными домами'],
+            ['#FFAA01', 'Зона застройки малоэтажными домами'],
+            ['#FFE131', 'Зона застройки индивидуальными жилыми домами']
+        ];
+
+        $colorsCount = count($baseLegend);
+    ?>
+
     <form method="POST" action="/result" enctype="multipart/form-data">
         @csrf
 
@@ -38,6 +48,23 @@
             </div>
 
             <span class="legend">Легенда карты:</span>
+            <div class="legend">
+                <?php $i = 0 ?>
+                @foreach($baseLegend as $entry)
+                    <div class="legendEntry">
+                        <div class="color" id="firstColor{{ $i }}" style="background-color: {{ $entry[0] }}" onclick="startChangingColor('legendFirstColor{{ $i }}')"></div>
+                        <input value="{{ $entry[0] }}" type="text" hidden name="legendFirstColor{{ $i }}" id="legendFirstColor{{ $i }}" onfocusout="applyColor('legendFirstColor{{ $i }}', 'firstColor{{ $i }}')">
+
+                        <textarea name="legendName{{ $i }}">{{ $entry[1] }}</textarea>
+
+                        <div class="color" id="secondColor{{ $i }}" style="background-color: {{ $entry[0] }}" onclick="startChangingColor('legendSecondColor{{ $i }}')"></div>
+                        <input value="{{ $entry[0] }}" type="text" hidden name="legendSecondColor{{ $i }}" id="legendSecondColor{{ $i }}" onfocusout="applyColor('legendSecondColor{{ $i }}', 'secondColor{{ $i }}')">
+                    </div>
+                    <?php $i++ ?>
+                @endforeach
+            </div>
+
+            <input type="hidden" value="{{ $colorsCount }}" name="colorsCount" id="colorsCount">
         </div>
 
         <input type="file" accept="image/*" name="map1" id="map1" hidden/>

@@ -30,6 +30,19 @@ function deleteImage(id)
     applyImage(id);
 }
 
+function startChangingColor(id)
+{
+    const input = document.getElementById(id);
+    input.hidden = false;
+    input.focus();
+}
+
+function applyColor(id, colorId)
+{
+    const input = document.getElementById(id);
+    input.hidden = true;
+    document.getElementById(colorId).style.backgroundColor = input.value;
+}
 
 document.getElementById('map1').addEventListener('change', function(event) {
     applyImage(1);
