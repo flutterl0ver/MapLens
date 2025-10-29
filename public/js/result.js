@@ -12,7 +12,7 @@ function closeDiff()
     }, 200);
 }
 
-function openDiff(x1, y1, x2, y2)
+function openDiff(x1, y1, x2, y2, area)
 {
     const panel = document.getElementById('diffPanel');
     const bg = document.getElementById('darkBg');
@@ -30,4 +30,6 @@ function openDiff(x1, y1, x2, y2)
 
     panel.style.opacity = '1';
     bg.style.opacity = '0.5';
+
+    document.getElementById('diffText').innerHTML = `Размер изменения: ${area} пикс`;
 }

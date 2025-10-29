@@ -29,8 +29,8 @@
             <div class="imagesContainer">
                 <div class="selectImg" onclick="chooseFile('map1')">
                     <div class="hint" id="map1Hint">
-                        <span>Загрузите изображение в формате .png или .jpg</span>
                         <img class="upload" src="{{ asset('img/upload.png') }}" alt>
+                        <span>Загрузите изображение в формате .png или .jpg</span>
                     </div>
                     <img class="preview" id="map1Preview" alt src="#">
                     <button class="delete" type="button" onclick="deleteImage(1)">
@@ -40,8 +40,8 @@
 
                 <div class="selectImg" onclick="chooseFile('map2')">
                     <div class="hint" id="map2Hint">
-                        <span>Загрузите изображение в формате .png или .jpg</span>
                         <img class="upload" src="{{ asset('img/upload.png') }}" alt>
+                        <span>Загрузите изображение в формате .png или .jpg</span>
                     </div>
                     <img class="preview" id="map2Preview" alt src="#">
                     <button class="delete" type="button" onclick="deleteImage(2)">
@@ -60,8 +60,8 @@
 
                         <textarea name="legendName{{ $i }}">{{ $entry[1] }}</textarea>
 
-                        <div class="color" id="secondColor{{ $i }}" style="background-color: {{ $entry[0] }}" onclick="startChangingColor('legendSecondColor{{ $i }}')"></div>
                         <input value="{{ $entry[0] }}" type="text" hidden name="legendSecondColor{{ $i }}" id="legendSecondColor{{ $i }}" onfocusout="applyColor('legendSecondColor{{ $i }}', 'secondColor{{ $i }}')">
+                        <div class="color" id="secondColor{{ $i }}" style="background-color: {{ $entry[0] }}" onclick="startChangingColor('legendSecondColor{{ $i }}')"></div>
                     </div>
                     <?php $i++ ?>
                 @endforeach

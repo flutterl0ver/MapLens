@@ -52,7 +52,11 @@ class MapsComparer:
         conts, h = cv2.findContours(cn, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         result = []
         for cont in conts:
-            result.append(self.get_rect(cont))
+            area = cv2.contourArea(cont)
+            if area <= 50:
+                continue
+
+            result.append([self.get_rect(cont), area])
         return result
 
     def get_masks(self, img, c_dict: ColorsDict):

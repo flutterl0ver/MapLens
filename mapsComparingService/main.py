@@ -23,6 +23,9 @@ if __name__ == '__main__':
     mapsUid = sys.argv[1]
     legendId = sys.argv[2]
 
+    # mapsUid = 'test'
+    # legendId = '019a2af0-b676-72d9-aafe-b2871058eb88'
+
     cd1 = ColorsDict()
     cd2 = ColorsDict()
 

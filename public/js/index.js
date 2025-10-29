@@ -60,8 +60,8 @@ function addLegendEntry()
 
             <textarea name="legendName${colorsCount}"></textarea>
 
-            <div class="color" id="secondColor${colorsCount}" onclick="startChangingColor('legendSecondColor${colorsCount}')"></div>
             <input value="#AAAAAA" type="text" hidden name="legendSecondColor${colorsCount}" id="legendSecondColor${colorsCount}" onfocusout="applyColor('legendSecondColor${colorsCount}', 'secondColor${colorsCount}')">
+            <div class="color" id="secondColor${colorsCount}" onclick="startChangingColor('legendSecondColor${colorsCount}')"></div>
         </div>
     `;
     colorsCount++;
