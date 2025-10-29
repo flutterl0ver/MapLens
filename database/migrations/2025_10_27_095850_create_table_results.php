@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id');
             $table->timestamps();
             $table->string('rects')->nullable();
+            $table->string('legend');
         });
     }
 

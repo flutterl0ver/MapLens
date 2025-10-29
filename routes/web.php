@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoadLegendController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
@@ -13,3 +14,4 @@ Route::get('report/{uid}', function($uid) {
 });
 
 Route::post('result', ResultController::class);
+Route::post('legend', LoadLegendController::class);

@@ -38,6 +38,7 @@ class ResultController extends Controller
         $output = shell_exec("$pythonPath $filePath $result->id $legend->id");
 
         $result->rects = $output;
+        $result->legend = $legend->id;
         $result->save();
 
         return redirect('result/' . $result->id);

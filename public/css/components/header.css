@@ -12,11 +12,7 @@ div.header {
 a.headerTitle {
     color: white;
     font-size: 40px;
-    line-height: 63px;
+    line-height: 83px;
     margin-left: 40px;
     text-decoration: none;
-}
-
-body {
-    margin-top: 100px;
 }

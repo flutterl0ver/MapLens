@@ -1,3 +1,17 @@
 html {
     font-family: 'Bounded ExtraLight';
+    background-color: #2F1C88;
+}
+
+body {
+    padding: 20px 20px 0 20px;
+    margin: 0;
+}
+
+div.body {
+    position: relative;
+    background-color: white;
+    border-radius: 64px 64px 0 0;
+    padding: 30px 0;
+    min-height: 100vh;
 }
